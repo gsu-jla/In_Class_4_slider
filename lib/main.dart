@@ -59,6 +59,27 @@ class _CounterWidgetState extends State<CounterWidget> {
     });
   }
 
+  // amount the counter will increment by
+  int _incAmount = 10;
+
+  //inbetween value to check if the counter is about to go negative
+  int _checkAbove = 0;
+
+  // max value allowed for slider
+  int _max = 100;
+
+  void _incrementCounter() {
+    setState(() {
+      // repurposed the decrement function above to do custom increment
+
+      _checkAbove = _counter + _incAmount;
+      //using a temp var to see if the app will check before crashing itself from breaking slider
+
+      if (_checkAbove <= _max) {_counter = _counter + _incAmount;}
+      else {_counter = 100;}
+    });
+  }
+
   @override
     Widget build(BuildContext context) {
       return Scaffold(
@@ -93,6 +114,10 @@ class _CounterWidgetState extends State<CounterWidget> {
             ElevatedButton(   //this is the reset button
               onPressed: _resetButton,
               child: const Text('Reset'),
+            ),
+            ElevatedButton(   //this is the reset button
+              onPressed: _incrementCounter,
+              child: const Text('Increment Counter'),
             ),
           ],
         ),
