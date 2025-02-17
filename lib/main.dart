@@ -27,7 +27,11 @@ class CounterWidget extends StatefulWidget {
 class _CounterWidgetState extends State<CounterWidget> {
   //initial couter value
   int _counter = 0;
+
+  // amount the counter will decrement by
   int _decAmount = 10;
+  
+  //inbetween value to check if the counter is about to go negative
   int _checkNegative = 0;
 
   void _decrementCounter() {
